@@ -4,8 +4,8 @@ this app will have all the cred function like creating , updating , deleting
 
 features:
 1.add date.
-2.select multiple for deleting
-3.after updating selective option like (search/add/delete) change button 's text to corresponding option
+2.after updating selective option like (search/add/delete) change button 's text to corresponding option
+3.select multiple for deleting
 4.drag and drop the lists with animation
 5.add image and audio
 6.connnect database and store it
@@ -16,3 +16,4 @@ features:
 11.change background through css dynamically
 12. options should not show delete when the lists are empty
 13. filters should not be dispalyed when the list size is only one
+14. lists should be added when pressing enter button

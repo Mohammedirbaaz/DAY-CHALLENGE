@@ -2,6 +2,7 @@
 	padding:0px;
 	margin: 0px;
 	font-family: Arial, Helvetica, sans-serif;
+	transition:	all 0.3s ease;
 }
 .main{
 	position: relative;
@@ -11,6 +12,7 @@
 	top: 10%;
 	margin-bottom: 10%;
 	background-color: rgb(133, 197, 253);
+	background-color: rgb(255, 199, 131);
 	padding: 2%;
 	Box-shadow:0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 	border-radius: 1%;
@@ -22,6 +24,7 @@
 	right: 5%;
 	height: auto;
 	background-color: rgb(136, 136, 136);
+	padding: 1%;
 }
 .headtitle{
 	position: relative;
@@ -62,13 +65,54 @@
 	text-align: center;
 	border-radius: 5px;
 }
+.submitbutton{
+	color: white;
+}
+.submitbutton:hover{
+	cursor: pointer;;
+}
 .searchbox{
 	padding: 2%;
 	text-align: start;
 }
-.notesvalue{
+.content{
 	background-color: blueviolet;
 	margin: 2%;
 	padding: 2%;
 	height: auto;
+	min-height: auto;
+	max-height: 50vh;
+	border-radius: 10px;
+	overflow: auto;
+	word-break: break-all;
+	text-align: justify;
+}
+.datetime,.functions{
+	display: inline-block;
+	background-color: aqua;
+	padding: 1% 1% 1% 0%;
+	font-size: 70%;
+}
+.notesvalue{
+	padding: 1% 0%;
+	font-size: 120%;
+}
+.functions1{
+	display: inline;
+	width: 15%;
+	height: auto;
+	float: right;
+	background-color: rgb(247, 212, 169);
+}
+.icons1{
+	position: relative;
+	padding: 5% 5%;
+	
+}
+.functions1:hover{
+	cursor: pointer;
+}
+.top_area{
+	display: flex;
+	flex-direction: row;
 }
