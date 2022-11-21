@@ -1,4 +1,5 @@
-var isclickedit=false;
+var arr=new Array();
+var i=0;
 function checkfield(){
     var choosed_option=document.getElementById("operations").value;
     var btn=document.getElementById("btnid");
@@ -21,18 +22,20 @@ function checkfield(){
         default:
             break;
     }
+    document.getElementById("oldestid").checked = true;
 }
 function add(){
     var element=document.getElementById("textval");
     if(element.value=="") return;
-
+    var ids=new Date().getTime();
     var parent=document.createElement("div");
-    parent.setAttribute("id",new Date().getTime());
+    parent.setAttribute("id",ids);
     parent.setAttribute("class","content");
 
     var datetime=document.createElement("div");
     datetime.setAttribute("class","datetime");
-    datetime.appendChild(document.createTextNode(new Date().toLocaleDateString()+"-"+new Date().getHours() + ":" + new Date().getMinutes()));    
+    var curdate=new Date().toLocaleDateString()+"-"+new Date().getHours() + ":" + new Date().getMinutes();
+    datetime.appendChild(document.createTextNode(curdate));    
     parent.appendChild(datetime);
 
     var functions1=document.createElement("div");
@@ -68,37 +71,48 @@ function add(){
     parent.appendChild(notesvalue);
 
     document.getElementById("bodydivid").appendChild(parent);
+    
+    arr[i]=new Array(3);
+    arr[i][0]=element.value;
+    arr[i][1]=ids;
+    arr[i][2]=curdate;
+    i++;
+    console.log(arr);
     element.value="";
     //EVENT DELEGATION
     parent.addEventListener("click",(e)=>{
-        if(e.target.id=="editid" && !isclickedit){
-            isclickedit=true;
-            e.target.setAttribute("src","https://img.icons8.com/small/15/black/approval.png")
+        if(e.target.id=="editid" ){
+            if(e.target.src=="https://img.icons8.com/material-outlined/15/black/pencil-tip.png"){
+                e.target.setAttribute("src","https://img.icons8.com/small/15/black/approval.png")
+                var common=e.target.parentElement.parentElement;
+                var val=common.childNodes[2].textContent;
+                var notesval=common.childNodes[2];
+                common.removeChild(notesval);
 
-            var common=e.target.parentElement.parentElement;
-            var val=common.childNodes[2].textContent;
-            var notesval=common.childNodes[2];
-            common.removeChild(notesval);
-
-            var newinput=document.createElement("input");
-            common.appendChild(newinput);
-            newinput.setAttribute("class","notesvalue");
-            
-            newinput.style.display="block";
-            newinput.setAttribute("value",val);
-            newinput.focus();  
-            newinput.addEventListener("mouseleave",()=>{
+                var newinput=document.createElement("textarea");
+                common.appendChild(newinput);
+                newinput.setAttribute("class","notesvalue notesvalue1");
+                
+                newinput.style.display="block";
+                newinput.innerHTML=val;
+                newinput.focus();  
+            }else{
+                e.target.setAttribute("src","https://img.icons8.com/material-outlined/15/black/pencil-tip.png")
+                var common=e.target.parentElement.parentElement;
                 var notesvalue=document.createElement("p");
                 notesvalue.setAttribute("class","notesvalue");
                 notesvalue.setAttribute("id","notesvalueid");
-                notesvalue.innerHTML=newinput.value;
-                common.replaceChild(notesvalue,newinput);       
-                isclickedit=false;         
-            })
+                notesvalue.innerHTML=common.childNodes[2].value;
+                common.replaceChild(notesvalue,common.childNodes[2]);  
+            }
         }else if(e.target.id=="deleteid"){
             var maincontent=document.getElementById("bodydivid");
             var common=e.target.parentElement.parentElement;          
             maincontent.removeChild(common);
         }
     });
+}
+
+function check(){
+    document.getElementById("bodydivid").remove();
 }

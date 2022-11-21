@@ -25,6 +25,7 @@
 	height: auto;
 	background-color: rgb(136, 136, 136);
 	padding: 1%;
+	margin: 1% 0%;
 }
 .headtitle{
 	position: relative;
@@ -115,4 +116,22 @@
 .top_area{
 	display: flex;
 	flex-direction: row;
+}
+
+.notesvalue1{
+	background-color: transparent;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid black;
+	width: 100%;
+	max-height:95%;
+}
+.radiobtn{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+
+}
+#datespecificid:hover,#latestid:hover,#oldestid:hover{
+	cursor: pointer;
 }
