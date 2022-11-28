@@ -1,6 +1,6 @@
-var arr=new Array();
-var i=0;
-function checkfield(){
+import './css/dashboard.css';
+function DashBoard() {
+  function checkfield(){
     var choosed_option=document.getElementById("operations").value;
     var btn=document.getElementById("btnid");
     switch(choosed_option){
@@ -20,11 +20,29 @@ function checkfield(){
             // document.body.style.backgroundColor="red";
             break;
         default:
+            btn.innerHTML="Add";
+            btn.style.backgroundColor="rgb(133, 197, 253)";
             break;
     }
     document.getElementById("oldestid").checked = true;
-}
-function add(){
+  }
+
+  function check(){
+    if(!document.getElementById("oldestid").checked){
+        var arr=document.getElementById("bodydivid").childNodes.length;
+        console.log(arr);
+        for(var i=1;i<arr.length;i++){
+            document.getElementById("bodydivid").removeChild(arr[i]);
+        }
+    }else if(document.getElementById("latestid").checked){
+
+    }else{
+
+    }
+    
+  }
+
+  function add(){
     var element=document.getElementById("textval");
     if(element.value=="") return;
     var ids=new Date().getTime();
@@ -72,12 +90,12 @@ function add(){
 
     document.getElementById("bodydivid").appendChild(parent);
     
-    arr[i]=new Array(3);
-    arr[i][0]=element.value;
-    arr[i][1]=ids;
-    arr[i][2]=curdate;
-    i++;
-    console.log(arr);
+    // arr[i]=new Array(3);
+    // arr[i][0]=element.value;
+    // arr[i][1]=ids;
+    // arr[i][2]=curdate;
+    // i++;
+    // console.log(arr);
     element.value="";
     //EVENT DELEGATION
     parent.addEventListener("click",(e)=>{
@@ -111,8 +129,50 @@ function add(){
             maincontent.removeChild(common);
         }
     });
-}
+  }
+  return (
+    <div className="main" >
+			<div className="commondiv">
+				<p className="headtitle">TO DO LIST</p>
+			</div>
+			<div className="commondiv searchdiv">
+				<div className="selection">
+					<select name="operations" className="operations" id="operations" onChange={()=>checkfield()}>
+						<option value="Add">Add</option>
+						<option value="Search">Search</option>
+						<option value="Delete">Delete</option>
+					</select>
+				</div>
+				<div className="search">
+					<textarea className="searchbox" placeholder="text" id="textval"></textarea>
+				</div>
+				<div className="submit">
+					<button className="submitbutton" onClick={()=>{add()}}  id="btnid">Add</button>
+				</div>
+			</div>
 
-function check(){
-    document.getElementById("bodydivid").remove();
+      {/* <div class="commondiv radiobtn" >
+					<form onChange={()=>check()}>
+            <input type="radio" id="oldestid" name="filter" value="Oldest"> Oldest</input>
+            <input type="radio" id="latestid" name="filter" value="Latest"> Latest</input>
+            <input type="radio" id="datespecificid" name="filter" value="DateSpecific" > Date Specific</input>
+          </form>
+			</div> */}
+
+      <div className="commondiv" id="bodydivid">
+        <div className="content">
+        <div className="datetime">11/12/2022-12:78</div>
+            <div className="functions1">
+              <img className="icons1"   src="https://img.icons8.com/material-outlined/15/black/pencil-tip.png"/>
+              <img className="icons1" src="https://img.icons8.com/material-outlined/15/black/hearts.png"/>
+              <img className="icons1" src="https://img.icons8.com/material-outlined/15/black/trash--v1.png"/>
+            </div>
+            {/* <input type="text" style="display:block;" className="notesvalue1 notesvalue" /> */}
+            <p className="notesvalue">hello all good evening to all of you please read this message fully</p>
+          </div>
+			</div>
+			
+		</div>
+  );
 }
+export default DashBoard;
