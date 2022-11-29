@@ -1,9 +1,15 @@
 const express=require('express');
+const cors=require('cors');
+const cookieParser=require('cookie-parser');
 const mongoose=require('mongoose');
 const app=express();
-require('dotenv').config();
 const Notesmod=require('./models/notes.model')
-app.use(express.json({extended: false}));
+
+require('dotenv').config();
+app.use(cors({origin:"http://localhost:3000",credentials:true}));
+app.use(express.static('public'));
+app.use(express.json());
+app.use(cookieParser());
 
 const uri=process.env.ATLAS_URI;
 const port=process.env.port || 5000;
@@ -18,7 +24,15 @@ mongoose.connect(uri,connectionparams).then(()=>{
     console.log("err "+e)
 });
 
-app.get('/add_notes',(req,res)=>{
+app.get('/',async(req,res)=>{
+    await Notesmod.find({}).then(data=>{
+        res.send(JSON.stringify(data));
+    }).catch(e=>{
+        res.send(e);
+    });
+})
+
+app.post('/add_notes',(req,res)=>{
     var notes=req.body.notes;
     var date=req.body.date;
     var fav=req.body.fav;
@@ -31,7 +45,7 @@ app.get('/add_notes',(req,res)=>{
 });
 
 app.get('/delete_notes',async(req,res)=>{
-    var c=await Notesmod.remove({notes:req.body.notes});
+    var c=await Notesmod.deleteMany({});
     res.send(c);
 
 })
