@@ -56,6 +56,7 @@ app.post('/edit_notes',async(req,res)=>{
 
 app.post('/search_notes',async(req,res)=>{
     var c=await Notesmod.find({ "notes": { "$regex": req.body.notes, "$options": "i" } });
+    if(c=="") res.send("no match!!");
     res.send(c);
 })
 

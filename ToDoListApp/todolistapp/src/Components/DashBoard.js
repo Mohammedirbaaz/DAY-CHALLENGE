@@ -32,7 +32,8 @@ function DashBoard() {
         element=arr[i].notes;
         if(element=="") return;
       }
-      var curdate=new Date().toLocaleDateString()+"-"+new Date().getHours() + ":" + new Date().getMinutes();
+      var prop=arr[i].date.split('T')
+      var curdate=prop[0]
       var parent=document.createElement("div");
       parent.setAttribute("class","content");
       if(dir==1) parent.setAttribute("id",arr[i]._id);
@@ -134,6 +135,7 @@ function DashBoard() {
     var btn=document.getElementById("btnid");
     switch(choosed_option){
         case "Add":
+            deleteexisting();
             btn.innerHTML="Add";
             btn.style.backgroundColor="rgb(133, 197, 253)";
             axios.get('http://localhost:5000/').then((res)=>{
@@ -158,6 +160,7 @@ function DashBoard() {
   async function btnfunction(){
     const notesvalf=document.getElementById("textval").value;
     if(document.getElementById("operations").value=="Add"){
+      if(notesvalf==""){alert("empty!!");return;}
       var curdate=new Date().toLocaleDateString()+"-"+new Date().getHours() + ":" + new Date().getMinutes();
       const notesdate=curdate;
       const obj={
@@ -175,6 +178,8 @@ function DashBoard() {
       deleteexisting();
       const obj={  notes:notesvalf }
       await axios.post("http://localhost:5000/search_notes",obj).then((data)=>{
+        console.log(data);
+        if(data.data=="no match!!") {alert(data.data); return;}
         if(data.data.length<=0) return;
         addlayout(data.data,1);
       }).catch(e=>{
@@ -202,14 +207,6 @@ function DashBoard() {
 					<button className="submitbutton" onClick={()=>{btnfunction()}}  id="btnid">Add</button>
 				</div>
 			</div>
-
-      {/* <div class="commondiv radiobtn" >
-					<form onChange={()=>check()}>
-            <input type="radio" id="oldestid" name="filter" value="Oldest"> Oldest</input>
-            <input type="radio" id="latestid" name="filter" value="Latest"> Latest</input>
-            <input type="radio" id="datespecificid" name="filter" value="DateSpecific" > Date Specific</input>
-          </form>
-			</div> */}
 
       <div className="commondiv" id="bodydivid">
         <div className="content">
