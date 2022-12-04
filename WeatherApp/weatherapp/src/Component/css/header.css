@@ -1,0 +1,11 @@
+.Headerhead{
+    position: relative;
+    width: 100%;
+    min-height: 50px;
+    height: auto;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
