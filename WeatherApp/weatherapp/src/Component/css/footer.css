@@ -1,0 +1,7 @@
+.footerhead{
+    position: relative;
+    /* bottom: 0%; */
+    width: 100%;
+    height: auto;
+    background-color: rgb(192, 192, 192);
+}

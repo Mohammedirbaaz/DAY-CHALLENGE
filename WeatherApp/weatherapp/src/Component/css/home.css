@@ -1,0 +1,100 @@
+.searchdiv{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    background-color: azure;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 1%;
+}
+
+.select,.input,.buttton{
+    outline:none;
+    border: none;
+    padding: 2%;
+    margin: 2%;
+    border-radius: 10px;
+}
+
+.input{
+    width: 50%;
+}
+.button,.select{
+    width: 20%;
+}
+.button{
+    height: 5vh;
+}
+.button{
+    background-color:rgb(209, 255, 176);
+    outline: none;
+    border:none;
+}
+.button:hover{
+    cursor: pointer;
+}
+.parentcardview{
+    position: relative;
+    width: 96%;
+    /* min-height: 50vh; */
+    height: auto;
+    background-color: rgb(196, 197, 197);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2% 0%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+ .cardview{
+    position: relative;
+    width: 20%;
+    height: 45vh;
+    /* background-color: rgb(118, 249, 249); */
+    margin: 1% 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border-radius: 10px; */
+    text-align: center;
+    flex-wrap: wrap;
+}
+.cardview:hover{
+    cursor: pointer;
+    box-shadow: 0px 3px 5px 1px rgb(106, 106, 106);
+}
+.cardimage{
+    position: relative;
+    width: 100%;
+    height: 80%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+.cardtitle{
+    position: relative;
+    width: 100%;
+    height: 18%;
+    background-color: aliceblue;
+    padding:1% 0%;
+    font-weight: bolder;
+    text-transform: capitalize;
+    font-size: 80%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+/* .carddesc{
+    position: relative;
+    width: 100%;
+    height: 29%;
+    background-color: rgb(42, 75, 103);
+    padding: 1% 0%;
+    font-size: 70%;
+} */
