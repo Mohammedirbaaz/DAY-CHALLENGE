@@ -1,5 +1,72 @@
 .header{
-    background-color: rgb(190, 243, 178);
+    position: sticky;
+    top:0px;
+    background-color:hsl(142, 100%, 83%);
     width: 100%;
-    min-height: 10vh;
+    min-height: 7vh;
+    color:white;
+    z-index: 2;
+}
+.title{
+    position: relative;
+    display: flex;
+    font-size: 200%;
+    /* background-color: antiquewhite; */
+    margin: 1%;
+    float: left; 
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    height: 10vh;
+}
+.child{
+    margin: 1%;
+    padding: 1%;
+}
+.menubar{display: none;}
+.smallmenu{
+    position: absolute;
+    top:5vh;
+    width: 100%;
+    height: auto;
+    /* background-color: #ffc0cb;  */
+    display: none;
+    z-index: 1;
+}
+.childmenu{
+    position: relative;
+    margin: 3%;
+    padding: 2%;
+    background-color: aliceblue;
+    top:8vh;
+}
+.child:hover{
+    cursor: pointer;
+    background-color:aquamarine;
+}
+@media screen and (max-width:786px) {
+    .header{
+        min-height: 8vh;
+    }
+    .navbar{
+        display: none;
+    }
+    .menubar{
+        display: inline;
+        float: right;
+        padding:1%;
+    }
+    .title{
+        font-size: 150%;
+    }
+    
+}
+@media screen and (min-width:787px) {
+    .childmenu{
+        display: none;
+    }
 }
