@@ -82,6 +82,9 @@
     width: 30%;
     padding: 2%;
 }
+.inp_submit2:hover{
+    background-color: rgb(255, 255, 208);
+}
 
 
 /* register */
@@ -123,5 +126,6 @@
     }
     .gender{
         width: 80%;
+        font-size: small;
     }
 }

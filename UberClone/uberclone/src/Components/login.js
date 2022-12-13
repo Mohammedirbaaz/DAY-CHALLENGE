@@ -12,8 +12,8 @@ function Login(){
                 <div className='logindiv'>
                     <div className='login_header'>Login</div>
                     <div className='login_form'>
-                        <input type="text" className='inp_submit'/>
-                        <input type="password" className='inp_submit'/>
+                        <input type="text" className='inp_submit' placeholder='Mailid'/>
+                        <input type="password" className='inp_submit' placeholder='Password'/>
                         <input type="submit" className='inp_submit2' />
                     </div>
                 </div>
